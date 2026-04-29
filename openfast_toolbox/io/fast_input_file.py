@@ -2068,7 +2068,7 @@ class ADPolarFile(FASTInputFileBase):
                 self.addValKey(     1.0 ,    'Re'  +labOffset , 'Reynolds number in millions')
                 self.addValKey(       0 ,    'Ctrl'+labOffset , 'Control setting')
                 if hasUA:
-                    self.addValKey(True  ,    'InclUAdata', 'Is unsteady aerodynamics data included in this table? If TRUE, then include 30 UA coefficients below this line')
+                    self.addValKey(True  ,    'InclUAdata' + labOffset, 'Is unsteady aerodynamics data included in this table? If TRUE, then include 30 UA coefficients below this line')
                     self.addComment('!........................................')
                     self.addValKey(     np.nan   , 'alpha0'    + labOffset, r"0-lift angle of attack, depends on airfoil.")
                     self.addValKey(     np.nan   , 'alpha1'    + labOffset, r"Angle of attack at f=0.7, (approximately the stall angle) for AOA>alpha0. (deg)")
@@ -2107,7 +2107,7 @@ class ADPolarFile(FASTInputFileBase):
                     self.addValKey(False ,    'InclUAdata'+labOffset, 'Is unsteady aerodynamics data included in this table? If TRUE, then include 30 UA coefficients below this line')
                 self.addComment('! Table of aerodynamics coefficients')
                 self.addValKey(0 ,    'NumAlf'+labOffset, '! Number of data lines in the following table')
-                self.addTable('AFCoeff'+labOffset, np.zeros((0,4)), tabType=2, tabDimVar='NumAlf', cols=['Alpha', 'Cl', 'Cd', 'Cm'], units=['(deg)', '(-)', '(-)', '(-)'])
+                self.addTable('AFCoeff'+labOffset, np.zeros((0,4)), tabType=2, tabDimVar='NumAlf'+labOffset, cols=['Alpha', 'Cl', 'Cd', 'Cm'], units=['(deg)', '(-)', '(-)', '(-)'])
         self.module='ADPolar'
 
     def _writeSanityChecks(self):
